@@ -1680,4 +1680,14 @@ new Phaser.Game({
     backgroundColor: '#000000',
     scene: [BattleScene],
     pixelArt: true,
+    // 모바일/창 크기 대응: 비율 유지하며 부모(#game = viewport)에 맞춤.
+    // 화면 회전·리사이즈 시 자동 refit. 위치(centering)는 CSS flex 가 담당.
+    scale: {
+        mode: Phaser.Scale.FIT,
+        autoCenter: Phaser.Scale.NO_CENTER,
+    },
+    // 모바일 입력 안정화 — 멀티터치/스크롤/제스처 차단은 CSS touch-action 으로 처리.
+    input: {
+        activePointers: 1,
+    },
 });
